@@ -28,3 +28,12 @@
   flex-grow: 1;
   transition: all 0.3s;
 }
+
+.tab-container {
+  display: flex;
+}
+
+.tab-item {
+  padding: 10px 20px;
+  cursor: pointer;
+}

@@ -1,9 +1,9 @@
 import styles from './Header.module.css'
 
-function Header({ toggleSidebar }) {
+function Header({ isShowSidebar, setIsShowSidebar }) {
   return (
     <div className={styles.header}>
-      <button onClick={toggleSidebar}>Menu</button>
+      <button onClick={() => setIsShowSidebar(!isShowSidebar)}>Menu</button>
       <h2>Username</h2>
     </div>
   )
