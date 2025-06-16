@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
-
+import { Link, useNavigate, useLocation, generatePath } from 'react-router-dom'
+import { Button, Input } from 'antd'
+import { ROUTES } from '../../../constants/routes'
 import styles from './styles.module.css'
 
 function Home() {
@@ -55,8 +56,15 @@ function Home() {
     <>
       <h1>Welcome to the Dashboard</h1>
       <p>This is your main content area.</p>
-      <Link to="/about">Go to About page</Link>
-      <button onClick={() => navigate('/about')}>Navigate to About</button>
+      <Link to={ROUTES.USER.ABOUT}>Go to About page</Link>
+      <Button
+        type="primary"
+        size="large"
+        loading
+        onClick={() => navigate(ROUTES.USER.ABOUT)}
+      >
+        Navigate to About
+      </Button>
       <div className={styles['tab-container']}>
         {renderTabItems()}
         <button onClick={() => handleAddTab()}>+</button>
@@ -64,20 +72,82 @@ function Home() {
       {renderTabContent()}
       <div>
         <div>
-          <input
+          <Input
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
           />
           {title}
         </div>
         <div>
-          <input
+          <Input
             onChange={(e) => setContent(e.target.value)}
             placeholder="Content"
           />
           {content}
         </div>
       </div>
+      <Link
+        to={generatePath(ROUTES.USER.PRODUCT_DETAIL, {
+          productId: 123,
+          optionId: 456,
+        })}
+      >
+        Go to Detail 123
+      </Link>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis
+        recusandae tenetur reprehenderit consequuntur magnam sunt in dolorum!
+        Velit obcaecati at iure explicabo excepturi. Eum sapiente enim
+        reprehenderit voluptatum, iure officia.
+      </p>
     </>
   )
 }

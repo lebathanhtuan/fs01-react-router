@@ -1,34 +1,49 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Suspense, lazy } from 'react'
+import { Routes, Route, ScrollRestoration } from 'react-router-dom'
+import { ConfigProvider } from 'antd'
 // Layout
 import AdminLayout from './layouts/AdminLayout'
 import UserLayout from './layouts/UserLayout'
 // User pages
 import Home from './pages/user/Home'
-import About from './pages/user/About'
+// import About from './pages/user/About'
 import ProductDetail from './pages/user/ProductDetail'
 // Admin pages
 import Dashboard from './pages/admin/Dashboard'
 import Chart from './pages/admin/Chart'
 
+import { ROUTES } from './constants/routes'
+
+const About = lazy(() => import('./pages/user/About'))
+
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<UserLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/product/:productId/option/:optionId"
-            element={<ProductDetail />}
-          />
-        </Route>
+    <ConfigProvider
+      theme={{
+        token: {
+          colorPrimary: '#eb1ea3',
+          borderRadius: 0,
+        },
+      }}
+    >
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <Routes>
+          <Route element={<UserLayout />}>
+            <Route path={ROUTES.USER.HOME} element={<Home />} />
+            <Route path={ROUTES.USER.ABOUT} element={<About />} />
+            <Route
+              path={ROUTES.USER.PRODUCT_DETAIL}
+              element={<ProductDetail />}
+            />
+          </Route>
 
-        <Route element={<AdminLayout />}>
-          <Route path="/admin/dashboard" element={<Dashboard />} />
-          <Route path="/admin/chart" element={<Chart />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route element={<AdminLayout />}>
+            <Route path={ROUTES.ADMIN.DASHBOARD} element={<Dashboard />} />
+            <Route path={ROUTES.ADMIN.CHART} element={<Chart />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </ConfigProvider>
   )
 }
 
